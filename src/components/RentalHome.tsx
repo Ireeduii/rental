@@ -18,8 +18,10 @@ import {
   Star,
   Users,
 } from "lucide-react";
-import { listings, formatMnt } from "@/types/rental";
-import type { FilterState } from "@/types/rental";
+
+import { listings, formatMnt } from "@/app/types/rental";
+
+import type { FilterState } from "@/app/types/rental";
 
 function Logo() {
   return (
@@ -98,10 +100,11 @@ export default function RentalHome() {
     beds: "Any",
   });
   const [showFilters, setShowFilters] = useState(false);
+
   const filtered = useMemo(
     () =>
       listings.filter(
-        (l) =>
+        (l: (typeof listings)[number]) =>
           (filters.district === "All districts" ||
             l.district === filters.district) &&
           l.price <= filters.maxPrice &&
@@ -109,6 +112,7 @@ export default function RentalHome() {
       ),
     [filters],
   );
+
   return (
     <main className="min-h-screen bg-background">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-8">
@@ -251,7 +255,7 @@ export default function RentalHome() {
         </div>
         {filtered.length ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {filtered.map((listing) => (
+            {filtered.map((listing: (typeof listings)[number]) => (
               <ListingCard key={listing.id} listing={listing} />
             ))}
           </div>
