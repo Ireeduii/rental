@@ -42,13 +42,13 @@ function ListingCard({ listing }: { listing: (typeof listings)[number] }) {
   return (
     <article className="group overflow-hidden rounded-2xl border border-border/70 bg-card shadow-[0_8px_30px_-20px_var(--foreground)] transition hover:-translate-y-1 hover:shadow-[0_20px_45px_-24px_var(--foreground)]">
       <div className="relative aspect-[1.18] overflow-hidden bg-muted">
-        <Image
+        {/* <Image
           src={listing.image}
           alt={listing.title}
           fill
           sizes="(max-width: 768px) 100vw, 25vw"
           className="object-cover transition duration-500 group-hover:scale-105"
-        />
+        /> */}
         <button
           aria-label={saved ? "Remove from favorites" : "Save listing"}
           onClick={() => setSaved(!saved)}
